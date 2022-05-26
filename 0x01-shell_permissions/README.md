@@ -1,4 +1,4 @@
-ndex		Scripts				Description
+Index		Scripts				Description
 1		0-iam_betty			This script switches the current user 
 						to betty
 2		1-who_am_i			This scripts prints the effective username

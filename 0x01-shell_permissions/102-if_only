@@ -1,2 +1,2 @@
 #!/bin/bash
-find . -user guillaume -name hello -type f -exec sudo chown betty {} /;
+find . -user guillaume -name hello -type f | sudo chown betty

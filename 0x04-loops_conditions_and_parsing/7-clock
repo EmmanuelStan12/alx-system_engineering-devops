@@ -1,8 +1,12 @@
 #!/usr/bin/env bash
 # this scripts prints the clock from 00:00 to 23:59
-for (( h=0; h <= 12; h++ )); do
+h=0
+while [ $h -le 12 ]; do
 	echo "Hour: $h"
-	for m in {1..59}; do
+	m=1
+	while [ $m -le 59 ]; do
 		echo "$m"
+		(( ++m ))
 	done
+	(( ++h ))
 done

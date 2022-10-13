@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# This script prints the content of a folder
+for filename in `ls`; do
+	echo "$filename" | cut -d "-" -f 2
+done

@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# This process prints a text every 2 seconds
+sudo echo $$ > /var/run/myscript.pid
+trap "echo 'I hate the kill command'; rm /var/run/myscript.pid" SIGTERM
+trap "rm /var/run/myscript.pid" SIGQUIT
+trap "echo 'Y U no love me?!'" SIGINT
+
+for ((;;)); do
+	echo "To infinity and beyond"
+	sleep 2
+done

@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# This displays a list of running processes
+ps aux | egrep bash
+# shellcheck disable=SC2009

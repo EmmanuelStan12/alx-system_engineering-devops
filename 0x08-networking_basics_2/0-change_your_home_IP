@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# This script modifies the host file
+HOSTFILE="/etc/hosts"
+cp "$HOSTFILE" new_file
+sed -i s/127.*/"127.0.0.2 localhost"/ new_file
+echo "facebook 8.8.8.8" >> new_file
+cp new_file "$HOSTFILE"

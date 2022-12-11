@@ -1,0 +1,4 @@
+# Connecting to SSH with only key pairs
+Host 100.24.72.234
+IdentityFile ~/.ssh/school
+PasswordAuthentication no

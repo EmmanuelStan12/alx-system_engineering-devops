@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# This file prints the current user
+if [ -z "$1" ]; then
+	whoami
+else
+	sudo -H -u "$1" bash -c "whoami"
+fi

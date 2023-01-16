@@ -21,10 +21,12 @@ if __name__ == '__main__':
         todos = r.json()
         header_format = 'Employee {} is done with task({}/{}):'
         c_todos = sum(todo['completed'] for todo in todos)
+        output_f = '"{}","{}","{}","{}"'
         with open('{}.csv'.format(uid), 'w') as file:
             for todo in todos:
-                line = '"{}","{}","{}","{}"'.format(uid,
-                        user['username'], todo['completed'],
-                        todo['title'])
+                line = output_f.format(uid,
+                                       user['username'],
+                                       todo['completed'],
+                                       todo['title'])
                 file.write(line)
                 file.write('\n')

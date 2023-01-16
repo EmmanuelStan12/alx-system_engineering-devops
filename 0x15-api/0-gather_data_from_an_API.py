@@ -17,7 +17,7 @@ if __name__ == '__main__':
         user_data = r.json()
         r = requests.get('{}/{}?userId={}'.format(base_url, 'todos', user_id))
         todos = r.json()
-        header_format = 'Employee {} is done with task({}/{}):'
+        header_format = 'Employee {} is done with tasks({}/{}):'
         c_todos = sum(todo['completed'] for todo in todos)
         print(header_format.format(user_data['name'], c_todos, len(todos)))
         for todo in todos:

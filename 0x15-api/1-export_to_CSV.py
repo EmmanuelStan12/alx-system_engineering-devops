@@ -22,8 +22,9 @@ if __name__ == '__main__':
         header_format = 'Employee {} is done with task({}/{}):'
         c_todos = sum(todo['completed'] for todo in todos)
         with open('{}.csv'.format(uid), 'w') as file:
-            writer = csv.writer(file)
             for todo in todos:
-                data = [uid, user['username'],
-                        todo['completed'], todo['title']]
-                writer.writerow(data)
+                line = '"{}","{}","{}","{}"'.format(uid,
+                        user['username'], todo['completed'],
+                        todo['title'])
+                file.write(line)
+                file.write('\n')

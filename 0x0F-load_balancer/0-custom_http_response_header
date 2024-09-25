@@ -3,21 +3,25 @@
 # Installs Nginx with some configurations
 
 sudo apt-get update -y
-sudo apt-get install nginx -y
+sudo apt-get install -y nginx
 sudo ufw allow 'Nginx HTTP'
 
 sudo mkdir -p /etc/nginx/html
 echo "Hello World!" > /etc/nginx/html/index.html
-echo "Oops! page does not exist" > /etc/nginx/html/404.html
+echo "Ceci n'est pas une page" > /etc/nginx/html/404.html
 
 printf %s "server {
 	listen 80 default_server;
 	listen [::]:80 default_server;
 	add_header X-Served-By $HOSTNAME;
 	root /etc/nginx/html;
-	index index.html;
+	index index.html index.htm;
 
-	try_files $uri $uri/ /404.html;
+	error_page 404 /404.html;
+	location /404 {
+		root /etc/nginx/html;
+		internal;
+	}
 }" > /etc/nginx/sites-available/default
 
 sudo service nginx restart

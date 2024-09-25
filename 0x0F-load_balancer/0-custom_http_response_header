@@ -1,13 +1,14 @@
 #!/usr/bin/env bash
+# Installs Nginx with some configurations.
+# Listens on port 80.
 
-# Installs Nginx with some configurations
+apt-get update
+apt-get install -y nginx
 
-sudo apt-get update -y
-sudo apt-get install -y nginx
-sudo ufw allow 'Nginx HTTP'
-
-sudo mkdir -p /etc/nginx/html
+mkdir -p /etc/nginx/html
+touch /etc/nginx/html/index.html
 echo "Hello World!" > /etc/nginx/html/index.html
+touch /etc/nginx/html/404.html
 echo "Ceci n'est pas une page" > /etc/nginx/html/404.html
 
 printf %s "server {
@@ -17,7 +18,7 @@ printf %s "server {
 	root /etc/nginx/html;
 	index index.html index.htm;
 	location /redirect_me {
-		return 301 https://youtu.be/3_mt7qZldLs;
+		return 301 https://www.youtube.com;
 	}
 	error_page 404 /404.html;
 	location /404 {
@@ -26,4 +27,4 @@ printf %s "server {
 	}
 }" > /etc/nginx/sites-available/default
 
-sudo service nginx restart
+service nginx restart

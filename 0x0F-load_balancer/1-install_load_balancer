@@ -2,10 +2,10 @@
 # This bash script installs HAProxy.
 # It uses the roundrobin algorithm for load balancing
 
-apt-get update -y
-apt-get install -y --no-install-recommends software-properties-common
-add-apt-repository ppa:vbernat/haproxy-2.4 -y
-apt install -y haproxy=2.4.\*
+apt-get install -y software-properties-common
+add-apt-repository ppa:vbernat/haproxy-1.8 -y
+apt-get update
+apt install -y haproxy=1.8.\*
 
 echo "ENABLED=1" >> /etc/default/haproxy
 mv /etc/haproxy/haproxy.cfg{,.original}
@@ -39,3 +39,5 @@ listen hbnb
     server 51011-web-01 54.198.60.38:80 check
     server 51011-web-02 100.25.135.194:80 check
 " >> /etc/haproxy/haproxy.cfg
+
+service haproxy start
